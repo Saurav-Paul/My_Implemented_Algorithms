@@ -1,71 +1,88 @@
-/* Dynamic Programming implementation of LCS problem */
-#include<iostream>
-#include<cstring>
-#include<cstdlib>
+#include<bits/stdc++.h>
+#define endl '\n'
+#define ll long long int
+#define loop(i,a,b)           for(ll i=a;i<=b;++i)
+#define pb                    push_back
+#define F                     first
+#define S                     second
+#define mp                    make_pair
+#define clr(x)                x.clear()
+#define MOD                   1000000007
+#define itoc(c)               ((char)(((int)'0')+c))
+#define vl                    vector<ll>
+#define SZ(x)                 (x).size()
+#define all(p)                p.begin(),p.end()
+#define mid(s,e)              (s+(e-s)/2)
+#define sv()                  ll t,n; scanf("%lld",&t);n=t; while(t--)
+#define tcase()               ll t,n; cin>>t;n=t; while(t--)
+#define iscn(num)             scanf("%d",&num);
 using namespace std;
+const ll INF = 2e18 + 99;
+typedef pair<ll,ll> Pair;
+typedef vector<ll> vll;
+bool file=0,rt=1;
+clock_t tStart ;
+void FAST_IO();
+////////////////////////
 
-/* Returns length of LCS for X[0..m-1], Y[0..n-1] */
-void lcs( char *X, char *Y, int m, int n )
-{
-    int L[m+1][n+1];
-
-    /* Following steps build L[m+1][n+1] in bottom up fashion. Note
-       that L[i][j] contains length of LCS of X[0..i-1] and Y[0..j-1] */
-    for (int i=0; i<=m; i++)
-    {
-        for (int j=0; j<=n; j++)
-        {
-            if (i == 0 || j == 0)
-                L[i][j] = 0;
-            else if (X[i-1] == Y[j-1])
-                L[i][j] = L[i-1][j-1] + 1;
-            else
-                L[i][j] = max(L[i-1][j], L[i][j-1]);
-        }
-    }
-
-    // Following code is used to print LCS
-    int index = L[m][n];
-
-    // Create a character array to store the lcs string
-    char lcs[index+1];
-    lcs[index] = '\0'; // Set the terminating character
-
-    // Start from the right-most-bottom-most corner and
-    // one by one store characters in lcs[]
-    int i = m, j = n;
-    while (i > 0 && j > 0)
-    {
-        // If current character in X[] and Y are same, then
-        // current character is part of LCS
-        if (X[i-1] == Y[j-1])
-        {
-            lcs[index-1] = X[i-1]; // Put current character in result
-            i--;
-            j--;
-            index--;     // reduce values of i, j and index
-        }
-
-        // If not same, then find the larger of two and
-        // go in the direction of larger value
-        else if (L[i-1][j] > L[i][j-1])
-            i--;
-        else
-            j--;
-    }
-
-    // Print the lcs
-    cout << lcs<<endl;
-}
-
-/* Driver program to test above function */
 int main()
 {
-    char X[3005];
-    char Y[3005];
-    scanf("%s %s",X,Y);
-    int m = strlen(X);
-    int n = strlen(Y);
-    lcs(X, Y, m, n);
+
+    FAST_IO();
+    ////////////////////////
+    string a,b; cin>>a>>b;
+    ll alen=a.size(),blen=b.size();
+    vector<vector<ll>> dp(alen+1,vector<ll>(blen+1,0));
+    for(int i=1; i<=alen ; i++){
+        for(int j=1; j<=blen ; j++){
+            if(a[i-1]==b[j-1]){
+                dp[i][j]=dp[i-1][j-1]+1;
+            }else{
+                dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+            }
+        }
+    }
+
+    // for(int i=0; i<=alen ; i++){
+    //     for(int j=0; j<=blen ; ++j)
+    //         cout<<dp[i][j]<<" ";
+    //     cout<<endl;
+    // }
+    // cout<<dp[alen][blen]<<endl;
+    string ans="";
+    ll i=alen,j=blen;
+    while(i>0 && j>0){
+        if(dp[i][j]==dp[i][j-1]){
+            j--;
+        }else if(dp[i][j]==dp[i-1][j]){
+            i--;
+        }else{
+            ans.pb(a[i-1]);
+            i--;
+            j--;
+        }
+    }
+    reverse(all(ans));
+    cout<<ans<<endl;
+    ////////////////////////
+    if(rt && file){
+     printf("\nTime taken: %.6fs", (double)(clock() - tStart)/CLOCKS_PER_SEC);
+    }
     return 0;
+   }
+
+void FAST_IO()
+{
+    ios_base::sync_with_stdio(0);
+    //cin.tie(NULL);
+    //cout.tie(NULL);
+    //cout.setf(ios::fixed);
+    //cout.precision(2);
+    if(rt && file){ tStart = clock(); }
+    if(file){
+    #ifndef _offline
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    }
 }
