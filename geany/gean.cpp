@@ -1,9 +1,9 @@
-						/*Saurav Paul*/
+			/*Saurav Paul*/
 #include<bits/stdc++.h>
 #define endl '\n'
 #define ll long long int
 #define loop(i,a,b)           for(ll i=a;i<=b;++i)
-#define boost				  ios_base::sync_with_stdio(0);
+#define boost		      ios_base::sync_with_stdio(0);
 #define eb                    emplace_back
 #define mp                    make_pair
 #define clr(x)                x.clear()
