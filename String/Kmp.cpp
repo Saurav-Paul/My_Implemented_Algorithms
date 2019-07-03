@@ -1,70 +1,72 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
-int ara[100000];
-void aramarking (int t, string T){
-int prfx=0,sufx=1;
-ara[0]=0;
-while(sufx<t){
-if(T[prfx]==T[sufx]){
-    ara[sufx]=prfx+1;
-    sufx++;
-    prfx++;
-}
-else{
-    if(prfx){
-      prfx=ara[prfx-1];
-    }
-    else{
-        ara[sufx]=0;
-        sufx++;
-    }
-}
+
+class kmp{
+	public :
+	void find_kmp(string &s, string &pattern){
+		int sz = (int)pattern.size();
+		vector<int> suffix(sz), matched;
+		build_suffix_array(suffix,pattern,sz);
+		
+		int n = (int) s.size();
+		for(int i = 0,j=0 ; j < n; ){
+			if(s[j]==pattern[i]){
+				i++;
+				j++;
+				if(i==sz){
+					matched.emplace_back(j-sz);
+					if(i)
+						i = suffix[i-1];
+				}
+			}
+			else{
+				if(i){
+					i = suffix[i-1];
+				}
+				else{
+					j++;
+				}
+			}
+		}
+		printf("Total matched : %d\n",(int)matched.size());
+		
+		for(int x : matched)
+			printf("%d ",x);
+		puts("");
+		
+	}
+	
+	private :
+	void build_suffix_array(vector<int> &suffix,string & s,int sz){
+		/** a b c d a b c y
+			0 0 0 0 1 2 3 0
+		**/
+		for(int i = 0 , j = 1 ; j < sz ; ){
+			
+			if(s[i]==s[j]){
+				suffix[j] = i+1;
+				i++ , j++;
+			}
+			else{
+				if(i){
+					i = suffix[i-1] ;
+				}
+				else{
+					suffix[j] = 0;
+					j++;
+				}
+			}
+		}
+		
+	}
+};
 
 
-}
-for(int temp=0;temp<t;temp++){
-    cout<<ara[temp]<<" ";
-}
-cout<<endl;
-}
-
-int kmp(string S, string T,int t){
-int cnt=0,i=0,j=0;
-while(i<S.length()){
- if(S[i]==T[j]){
-    i++;
-    j++;
-    if(j==t){
-        cnt++;
-        j=0;
-    }
- }
- else {
-
-    if(j){
-      j=ara[j-1];
-
-    }
-    else{
-        i++;
-    }
- }
-
-}
-return cnt;
-
-}
 int main(){
-string S,T;
-int s,t,q;
-cin>>s>>t>>q>>S>>T;
-int i,j,temp,st,sp;
-aramarking (t, T);
-while(q--){
-    cin>>st>>sp;
-    string str=S.substr(st-1,(sp-st)+1);
-    cout<<str;
-   int cnt= kmp(str,T,t);
-   cout<<endl<<cnt<<endl;
-}
+	string s, pattern;
+	cin >> s >> pattern;
+	kmp obj;
+	obj.find_kmp(s,pattern);
+	
+	return 0;
 }
