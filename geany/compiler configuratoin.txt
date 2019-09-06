@@ -1,0 +1,6 @@
+faster:
+g++  -O2 -std=c++17    -Wno-unused-result   -Wshift-overflow=2  -Wshadow  -Wall  -DPAUL  -o  "%e" "%f"
+ 
+ 
+more debug :
+g++ -std=c++17  -DPAUL   -Wshadow -Wconversion  -Wall -o "%e" "%f" -fsanitize=address -fsanitize=undefined  -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC  -g   
