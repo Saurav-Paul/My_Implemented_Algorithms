@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#define cerr if(1)cerr
 using namespace std;
 const int nax = 1e3;
 
