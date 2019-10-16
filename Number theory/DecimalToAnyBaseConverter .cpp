@@ -2,7 +2,10 @@
   This Function can convert decimal number to any base number ...
  */
 void DeciToAnyBase(ll number , ll base){
-
+    if(number == 0){
+      cout << 0 << endl ;
+      return ;
+    }
     string ans = "";
     while(number != 0){
         ll reminder = number%base ;
