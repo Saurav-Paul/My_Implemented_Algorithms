@@ -38,8 +38,8 @@ string addStringModified (string a, string b){
 string multiplication(string s, ll n ){
 	
 	reverse(s.begin() , s.end() ) ;
-	vector<string> temporary ;
 
+	string ans = "0";
 	int koy_number = 0 ;
 	while( n!= 0 ){
 		int num = n%10 ;
@@ -65,16 +65,10 @@ string multiplication(string s, ll n ){
 			zero += '0' ;
 		}
 		temp = zero + temp ;
-		temporary.emplace_back(temp) ;
+		ans = addStringModified(ans,temp) ;
 		koy_number ++;
 		
 	}
-	
-	s = "0";
-	
-	for(auto x : temporary ){
-		s = addStringModified(s , x ) ;
-	}
-	
-	return s ; 
+
+	return ans ; 
 }
