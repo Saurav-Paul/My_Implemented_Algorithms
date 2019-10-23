@@ -1,3 +1,4 @@
+                    /*Saurav Paul*/
 #include<iostream>
 #include<stack>
 #include<vector>
@@ -37,8 +38,8 @@ void quick_sort()
     int st=trng.start;
     int sp=trng.stop;
     stck.pop();
-   int  i=st;
-  int   j=sp;
+    int  i=st;
+    int   j=sp;
     int flag =1;
     while(i!=j)
     {
