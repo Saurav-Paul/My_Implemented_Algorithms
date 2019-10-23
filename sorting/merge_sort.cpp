@@ -1,3 +1,4 @@
+                    /*Saurav Paul*/
 #include<stdio.h>
 int ara[100];
 void merge_sort(int left, int right);
