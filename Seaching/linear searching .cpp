@@ -1,3 +1,4 @@
+            /*Saurav Paul*/
 /*linear searching */
 //Code :
 #include<stdio.h>

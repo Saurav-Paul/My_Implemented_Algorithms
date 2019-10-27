@@ -1,3 +1,4 @@
+            /*Saurav Paul*/
 /* Here primelist is set of all primenumber and it should be calculated using
    sieve algorithm. This function calculate number of divisor using factorization.
    
