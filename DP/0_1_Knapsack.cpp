@@ -1,23 +1,27 @@
+				/*Saurav Paul*/
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long
-typedef vector<ll> vec;
-void max_self(ll &a, ll b){
-a=max(a,b);
+
+int main()
+{
+	int item , knapsack;
+	scanf("%d%d",&item,&knapsack);
+	
+	vector<long long int> dp(knapsack+10);
+	for(int i = 0 ; i < item; i++){
+		int w , v; 
+		scanf("%d%d",&w,&v);
+		for(int weight = knapsack ; weight >= w ; weight--){
+			if(weight-w == 0 or dp[weight-w] ){
+				dp[weight] = max(dp[weight-w] + v , dp[weight] );
+			}
+		}
+	}
+	
+	long long int mx = 0;
+	for(auto x : dp) mx = max(mx,x);
+	
+	printf("%lld\n",mx);
+	
+    return 0;
 }
-int main(){
-ll n, w; scanf("%lld %lld",&n,&w);
-vec dp(w+1);
-for(int i=0; i<n ; i++){
-ll weight, value; scanf("%lld %lld",&weight,&value);
-for(int now_weight=w-weight ; now_weight>=0 ; --now_weight){
-    max_self(dp[now_weight+weight],dp[now_weight]+value);
-}
-}
-ll ans=0;
-for(auto i: dp)
-    max_self(ans,i);
-printf("%lld\n",ans);
-return 0;
-}
- 
