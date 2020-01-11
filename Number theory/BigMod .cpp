@@ -1,15 +1,14 @@
             /*Saurav Paul*/
-using ll = long long int ;
-ll BigMod(ll num , ll power, ll mod){
+long long int BigMod(long long int num , long long int power, long long int mod){
 	
 	if(power == 0 ){
 		return 1 ;
 	}
-	ll x = 1 ;
+	long long int x = 1 ;
 	if(power&1){
 		x = num ;
 	}
-	ll y = BigMod(num,power/2,mod) ;
+	long long int y = BigMod(num,power/2,mod) ;
 	y = ( y%mod * y%mod )%mod ;
 	return (y%mod * x%mod)%mod ;
 }
