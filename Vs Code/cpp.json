@@ -21,7 +21,7 @@
 		"description": "factorization"
 	  },
 	  "Faster Input Output": {
-		"prefix": "ios",
+		"prefix": "boost",
 		"body": [
 		  "ios_base::sync_with_stdio(false);"
 		],
@@ -282,7 +282,7 @@
 		"body": [
 		  "int testcase;",
 		  "cin >> testcase;",
-		  "for (int t = 1; t <= t; t++)",
+		  "for (int t = 1; t <= testcase; t++)",
 		  "{",
 		  "	solve();",
 		  "}"
@@ -523,11 +523,67 @@
 		"body": [
 		  "void solve() {",
 		  "",
-		  "",
+		  "	$0",
 		  "}"
 		],
 		"description": "solve"
 	  },
+	  "bit operation": {
+		"prefix": "bit_function",
+		"body": [
+		  "template<typename T>T set_bit(T N,T pos){return N=N | (1<<pos);}",
+		  "template<typename T>T reset_bit(T N,T pos){return N= N & ~(1<<pos);}",
+		  "template<typename T> bool check_bit(T N,T pos){return (bool)(N & (1<<pos));}",
+		  "template<typename T>void bin_print(T N){bitset<25>bit(N);cerr<<bit.to_string()<<\"\\n\";}"
+		],
+		"description": "bit operation"
+	  },
+	  "loop ": {
+		"prefix": "loop",
+		"body": [
+		  "for($1 ; $2 ; $3){",
+		  "	$0",
+		  "}"
+		],
+		"description": "loop "
+	  },
+	  "vi": {
+		"prefix": "vi",
+		"body": [
+		  "vector<int>"
+		],
+		"description": "vi"
+	  },
+	  "vll": {
+		"prefix": "vll",
+		"body": [
+		  "vector<long long int> "
+		],
+		"description": "vll"
+	  },
+	  "mp": {
+		"prefix": "mp",
+		"body": [
+		  "make_pair($1,$2)"
+		],
+		"description": "mp"
+	  },
+	  "eb": {
+		"prefix": "eb",
+		"body": [
+		  "emplace_back($1) ;"
+		],
+		"description": "eb"
+	  },
+	  "all()": {
+		"prefix": "all()",
+		"body": [
+		  "$1.begin(),$1.end()"
+		],
+		"description": "all()"
+	  },
+	  
+
 	  
 
 
