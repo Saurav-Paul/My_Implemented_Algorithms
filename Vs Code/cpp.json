@@ -23,7 +23,9 @@
 	  "Faster Input Output": {
 		"prefix": "boost",
 		"body": [
-		  "ios_base::sync_with_stdio(false);"
+		  "ios_base::sync_with_stdio(false);",
+		  "cin.tie(0);",
+		  "$0"
 		],
 		"description": "Faster Input Output"
 	  },
@@ -508,9 +510,9 @@
 		  "#include<bits/stdc++.h>",
 		  "using namespace std;",
 		  "",
-		  "int main()",
-		  "{",
+		  "int main(){",
 		  "	",
+		  "	$0",
 		  "",
 		  "	return 0;",
 		  "}",
