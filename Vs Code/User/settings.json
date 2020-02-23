@@ -21,7 +21,7 @@
     "code-runner.fileDirectoryAsCwd": true,
     "code-runner.runInTerminal": true,
     "code-runner.saveFileBeforeRun": true,
-    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.shell.linux": "/usr/bin/zsh",
     "C_Cpp.default.cppStandard": "c++17",
     "code-runner.executorMap": {
         "cpp": "g++ -std=c++17 -O2 -DPAUL -Wshift-overflow=2  -Wshadow  -Wall -o sol $fullFileName && ./sol"
@@ -38,7 +38,33 @@
     "workbench.activityBar.visible": true,
     "workbench.colorTheme": "Community Material Theme Darker High Contrast",
     "C_Cpp.autocomplete": "Disabled",
-    "breadcrumbs.enabled": false,
-    "explorer.sortOrder": "modified"
+    "breadcrumbs.enabled": true,
+    "explorer.sortOrder": "modified",
+    //"editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, ",
+    "editor.fontFamily": "Hack Nerd Font",
+
+    //"terminal.integrated.fontFamily": "'Ubuntu Mono', 'PowerlineSymbols'",
+   //"terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "terminal.integrated.rightClickBehavior": "copyPaste",
+    "terminal.integrated.fontWeight": "bold",
+    "terminal.integrated.fontWeightBold": "normal",
+    "workbench.editor.tabSizing": "shrink",
+    "zenMode.hideTabs": false,
+   
+    "workbench.editor.limit.enabled":true ,
+    "workbench.editor.limit.value": 6,
+    "editor.insertSpaces": true,
+    "open-in-vim.openMethod": "gvim",
+
+    "editor.fontSize": 15,
+    // vimStyle
+    "vimStyle.changeCursorStyle": true,
+    "vimStyle.imapEsc": "ii",
+    "window.zoomLevel": 0,
+
+    // tab
+    "editor.tabSize": 4 ,
+    "editor.detectIndentation": false,
 
 }
