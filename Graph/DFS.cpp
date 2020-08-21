@@ -9,24 +9,23 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-using ll = long long int ;
-
 int Node, Edge ;
 vector<vector<int>> graph ;
 vector<int> vis ;
 
+// dfs Implementation 
 void dfs(int node, int parent){
     // code
     vis[node] = 1 ;
 
     for(auto x : graph[node]){
-        if(x == parent) continue ;
-        if(vis[x]) continue ;
+        if(x == parent || vis[x]) continue ;
         dfs(x,node) ;
     }
 
     // code
 }
+// dfs Implementation End
 
 void solve(){
     cin >> Node >> Edge ;
