@@ -1,68 +1,58 @@
-#include<iostream>
-#include<vector>
+
+/**
+ *    author        : Saurav Paul 
+ *    created       : August 21, 2020 7:22 PM
+ *    Problem Name  : DFS
+ *    @genarated by : ai-virtual-assistant
+**/
+
+#include<bits/stdc++.h>
 using namespace std;
-int node;
-vector<int>vec[100];
-bool mark[100];
-void dfsvisit(int cnode);
-void dfs();
-int main()
-{
-    cout<<"Enter the total number of node : ";
-    cin>>node;
-    int edge;
-    cout<<"Enter total number of edge : ";
-    cin>>edge;
-    cout<<"Enter all the edges : "<<endl;
-    for(int i =0 ; i<edge; i++)
-    {
-        cout<<"\nedge "<<i+1<<": ";
-        int node1,node2;
-        cin>>node1>>node2;
-        node1--;
-        node2--;
-        vec[node1].push_back(node2);
-        vec[node2].push_back(node1);
-    }
-    /*
-    cout<<"\nall the nodes : "<<endl;
-    for(int i=0;i<node;i++){
-            cout<<i+1<<"-> ";
-        for(int j=0;j<vec[i].size();j++){
-            cout<<vec[i][j]+1<<" ";
-        }
-    cout<<endl;
 
+using ll = long long int ;
+
+int Node, Edge ;
+vector<vector<int>> graph ;
+vector<int> vis ;
+
+void dfs(int node, int parent){
+    // code
+    vis[node] = 1 ;
+
+    for(auto x : graph[node]){
+        if(x == parent) continue ;
+        if(vis[x]) continue ;
+        dfs(x,node) ;
     }
-    */
-//calling dfs search
-    dfs();
-    return 0;
-}
-void dfs()
-{
-    cout<<"I am calling "<<endl;
-//need to define all mark as zero,
-//but it is global so already zero
-    for(int i=0; i<node; i++)
-    {
-        if(mark[i]==0)
-        {
-            dfsvisit(i);
-        }
-    }
+
+    // code
 }
 
-void dfsvisit(int cnode)
-{
-    //marking as visited
-    mark[cnode]=1;
-    for(int i=0; i<vec[cnode].size(); i++)
-    {
-        int n=vec[cnode][i];
-        if(mark[n]==0)
-        {
-            dfsvisit(n);
-        }
+void solve(){
+    cin >> Node >> Edge ;
+
+    graph = vector<vector<int>> (Node+1, vector<int>()) ;
+    vis = vector<int> (Node+1) ;
+
+    for(int i = 0 ; i < Edge ; i++){
+        int u , v;
+        cin >> u >> v;
+        graph[u].emplace_back(v) ;
+        graph[v].emplace_back(u) ;
     }
+
+    int start_node = 1;
+    dfs(start_node,start_node) ;
+    
+}
+
+int main(){
+    ios_base::sync_with_stdio(false);
+
+    int testcases = 1;
+    for(int i = 1 ; i <= testcases ; i ++){
+        solve();
+    }
+
+    return 0 ;
 }
