@@ -20,7 +20,7 @@ ll BigModInverse(ll num , ll mod ){
 	return BigMod(num,mod-2,mod) ;
 }
 void precomputation(){
-    fact[0] = mmi[0]= 1;
+    fact[0] = mod_inverse[0]= 1;
     for(int i = 1 ; i < SZ ; i++){
         fact[i] = (fact[i-1] * i) % MOD ;
         ll x=BigModInverse(fact[i], MOD)%MOD;
