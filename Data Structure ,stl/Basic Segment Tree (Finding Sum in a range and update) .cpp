@@ -3,6 +3,8 @@
  *    author        : Saurav-Paul 
  *    created       : September 21, 2020 5:09 PM
  *    Problem Name  : A. Segment Tree for the Sum
+ *    Problem Limit : 1000 ms , 1024 MB 
+ *    Problem Url   : https://codeforces.com/edu/course/2/lesson/4/1/practice/contest/273169/problem/A
  *    @genarated by : ai-virtual-assistant
 **/
 
@@ -33,7 +35,7 @@ class Segment_tree{
 
             update(lft,index,st,mid,val) ;
             update(rght,index,mid+1,sp,val) ;
-            tree[node] = tree[lft] + tree[rght] ;
+            tree[node] = operation(tree[lft],tree[rght]) ;
         }
 
     }
@@ -67,8 +69,11 @@ class Segment_tree{
 
             build(v,lft,st,mid) ;
             build(v,rght,mid+1,sp) ;
-            tree[node] = tree[lft] + tree[rght] ;
+            tree[node] = operation(tree[lft],tree[rght]) ;
         }
+    }
+    ll operation(ll a, ll b){
+        return a + b ;
     }
 
 };
