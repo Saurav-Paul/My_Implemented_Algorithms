@@ -54,7 +54,7 @@ class Segment_tree{
             ll q1 = query(lft,l,r,st,mid) ;
             ll q2 = query(rght,l,r,mid+1,sp) ;
 
-            return q1 + q2 ;
+            return operation(q1, q2) ;
         }
     }
 
